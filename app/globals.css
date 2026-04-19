@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Make all buttons pill-shaped (more round) */
+button,
+.btn,
+[role="button"],
+a.btn {
+  border-radius: 9999px !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.97);
+}
