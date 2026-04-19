@@ -1,7 +1,5 @@
 "use client";
 
- "use client";
-
 import { Button } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { RxChevronRight } from "react-icons/rx";
@@ -58,12 +56,14 @@ export const Layout121Defaults: Props = {
 export const Layout121 = (props: Partial<Props>) => {
   const { tagline, heading, buttons, features } = { ...Layout121Defaults, ...props };
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
           <div>
-            <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+            <p className="mb-3 inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary md:mb-4">
+              {tagline}
+            </p>
+            <h2 className="mb-5 text-4xl font-bold leading-tight text-slate-900 md:mb-6 md:text-6xl lg:text-7xl">
               {heading}
             </h2>
             <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
@@ -74,17 +74,20 @@ export const Layout121 = (props: Partial<Props>) => {
               ))}
             </div>
           </div>
-          <div className="relative">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 md:p-5">
             {features.map((feat, idx) => (
-              <div key={idx} className="grid grid-cols-[max-content_1fr] gap-x-6 lg:gap-x-10">
-                <div className="relative flex flex-col items-center justify-start py-10">
-                  <div className="relative z-10 -mt-4 rounded-full bg-white px-2 py-4 md:px-4">
+              <div
+                key={idx}
+                className="mb-3 grid grid-cols-[max-content_1fr] gap-x-5 rounded-2xl bg-white px-4 py-6 shadow-sm last:mb-0 md:gap-x-6 md:px-6"
+              >
+                <div className="relative flex flex-col items-center justify-start">
+                  <div className="relative z-10 rounded-full bg-primary/10 p-3">
                     <img src={feat.icon.src} alt={feat.icon.alt} className="size-12" />
                   </div>
                 </div>
-                <div className="py-10">
-                  <h6 className="mb-3 text-md font-bold md:mb-4 md:text-xl">{feat.heading}</h6>
-                  <p>{feat.description}</p>
+                <div>
+                  <h6 className="mb-2 text-lg font-bold text-slate-900 md:text-xl">{feat.heading}</h6>
+                  <p className="text-slate-600">{feat.description}</p>
                 </div>
               </div>
             ))}

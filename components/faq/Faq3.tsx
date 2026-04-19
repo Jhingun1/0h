@@ -56,13 +56,13 @@ export const Faq3 = (props: Partial<Props>) => {
   };
 
   return (
-    <section id="faq" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="faq" className="bg-slate-50 px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-12 lg:grid-cols-[.75fr,1fr] lg:gap-x-20">
         <div>
-          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="mb-5 text-5xl font-bold text-primary-dark md:mb-6 md:text-7xl lg:text-8xl">
             {heading}
           </h2>
-          <p className="md:text-md">{description}</p>
+          <p className="text-slate-700 md:text-md">{description}</p>
           <div className="mt-6 md:mt-8">
             <Button {...button} className="rounded-full">
               {button.title}
@@ -74,12 +74,12 @@ export const Faq3 = (props: Partial<Props>) => {
             <AccordionItem
               key={idx}
               value={`item-${idx}`}
-              className="mb-4 rounded-2xl border"
+              className="mb-4 rounded-2xl border border-slate-200 bg-white shadow-sm"
             >
-              <AccordionTrigger className="px-4 md:py-5 md:text-md">
+              <AccordionTrigger className="px-4 font-semibold text-primary-dark md:py-5 md:text-md">
                 {q.title}
               </AccordionTrigger>
-              <AccordionContent className="px-4 md:pb-6">
+              <AccordionContent className="px-4 text-slate-700 md:pb-6">
                 {q.answer}
               </AccordionContent>
             </AccordionItem>

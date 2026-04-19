@@ -50,7 +50,7 @@ export const Navbar1 = (props?: Partial<Props>) => {
   const isMobile = useMediaQuery("(max-width: 991px)");
 
   return (
-    <section className="z-[999] flex w-full items-center border-b border-border-primary bg-background-primary lg:min-h-18 lg:px-[5%]">
+    <section className="sticky top-0 z-[999] flex w-full items-center border-b border-blue-100 bg-white/90 backdrop-blur-sm lg:min-h-18 lg:px-[5%]">
       <div className="size-full lg:flex lg:items-center lg:justify-between">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <a href={logo.url}>
@@ -62,17 +62,17 @@ export const Navbar1 = (props?: Partial<Props>) => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-primary-dark"
               animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
               variants={topLineVariants}
             />
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-primary-dark"
               animate={isMobileMenuOpen ? "open" : "closed"}
               variants={middleLineVariants}
             />
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-primary-dark"
               animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
               variants={bottomLineVariants}
             />
@@ -89,7 +89,7 @@ export const Navbar1 = (props?: Partial<Props>) => {
             <a
               key={idx}
               href={link.url}
-              className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+              className="block py-3 text-md font-medium text-slate-700 first:pt-7 transition-colors hover:text-primary-dark lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
               onClick={() => {
                 if (isMobile) {
                   setIsMobileMenuOpen(false);

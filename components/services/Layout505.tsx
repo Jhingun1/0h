@@ -27,7 +27,6 @@ export const Layout505Defaults: Props = {
             title: "Learn more",
             variant: "link",
             size: "link",
-            iconRight: "icon-right-stub",
             className: "rounded-full",
           },
         ],
@@ -45,7 +44,6 @@ export const Layout505Defaults: Props = {
             title: "Learn more",
             variant: "link",
             size: "link",
-            iconRight: "icon-right-stub",
             className: "rounded-full",
           },
         ],
@@ -63,7 +61,6 @@ export const Layout505Defaults: Props = {
             title: "Learn more",
             variant: "link",
             size: "link",
-            iconRight: "icon-right-stub",
             className: "rounded-full",
           },
         ],
@@ -81,7 +78,6 @@ export const Layout505Defaults: Props = {
             title: "Learn more",
             variant: "link",
             size: "link",
-            iconRight: "icon-right-stub",
             className: "rounded-full",
           },
         ],
@@ -99,7 +95,6 @@ export const Layout505Defaults: Props = {
             title: "Learn more",
             variant: "link",
             size: "link",
-            iconRight: "icon-right-stub",
             className: "rounded-full",
           },
         ],
@@ -111,24 +106,26 @@ export const Layout505Defaults: Props = {
 export const Layout505 = (props: Partial<Props>) => {
   const { tagline, heading, description, tabs, defaultTabValue } = { ...Layout505Defaults, ...props };
   return (
-    <section id="services" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="services" className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
-        <div className="mx-auto mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
-          <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{heading}</h2>
-          <p className="md:text-md">{description}</p>
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-18 lg:mb-20">
+          <p className="mb-3 font-semibold text-primary md:mb-4">{tagline}</p>
+          <h2 className="mb-5 text-4xl font-bold text-slate-900 md:mb-6 md:text-6xl lg:text-7xl">
+            {heading}
+          </h2>
+          <p className="text-slate-600 md:text-md">{description}</p>
         </div>
         <Tabs
           defaultValue={defaultTabValue}
           orientation="vertical"
-          className="relative grid auto-cols-fr grid-cols-1 border border-border-primary rounded-3xl md:grid-cols-[1fr_1.5fr]"
+          className="relative grid auto-cols-fr grid-cols-1 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_60px_rgba(2,6,23,0.1)] md:grid-cols-[1fr_1.5fr]"
         >
-          <TabsList className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-border-primary md:border-b-0 md:border-r">
+          <TabsList className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-slate-200 bg-slate-50/90 md:border-b-0 md:border-r">
             {tabs.map((tab, idx) => (
               <TabsTrigger
                 key={idx}
                 value={tab.value}
-                className="items-start justify-start border-0 border-b border-border-primary px-6 py-6 text-xl font-bold last-of-type:border-0 data-[state=active]:bg-background-primary rounded-none first:rounded-tl-3xl last:rounded-bl-3xl md:first:rounded-tl-3xl md:last:rounded-bl-3xl"
+                className="items-start justify-start rounded-none border-0 border-b border-slate-200 px-6 py-6 text-xl font-bold text-slate-700 last-of-type:border-0 data-[state=active]:bg-white data-[state=active]:text-primary first:rounded-tl-3xl last:rounded-bl-3xl md:first:rounded-tl-3xl md:last:rounded-bl-3xl"
               >
                 {tab.trigger}
               </TabsTrigger>
@@ -138,13 +135,17 @@ export const Layout505 = (props: Partial<Props>) => {
             <TabsContent key={tab.value} value={tab.value} className="data-[state=active]:animate-tabs">
               <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16">
                 <div className="mb-5 md:mb-6">
-                  <img src={tab.content.icon.src} className="size-12" alt={tab.content.icon.alt} />
+                  <div className="inline-flex rounded-full bg-primary/10 p-3">
+                    <img src={tab.content.icon.src} className="size-9" alt={tab.content.icon.alt} />
+                  </div>
                 </div>
-                <h2 className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl lg:text-6xl">{tab.content.heading}</h2>
-                <p>{tab.content.description}</p>
+                <h2 className="mb-5 text-3xl font-bold text-slate-900 md:mb-6 md:text-5xl lg:text-6xl">
+                  {tab.content.heading}
+                </h2>
+                <p className="text-slate-600">{tab.content.description}</p>
                 <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                   {tab.content.buttons.map((btn, i) => (
-                    <Button key={i} {...btn} className="rounded-full">
+                    <Button key={i} {...btn} className="rounded-full text-primary hover:text-primary-dark">
                       {btn.title}
                     </Button>
                   ))}

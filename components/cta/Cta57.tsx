@@ -22,9 +22,9 @@ export const Cta57Defaults: Props = {
 export const Cta57 = (props: Partial<Props>) => {
   const { headers, description, buttons } = { ...Cta57Defaults, ...props };
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="bg-gradient-to-br from-primary-dark via-primary to-secondary px-[5%] py-16 text-white md:py-24 lg:py-28">
       <div className="container">
-        <div className="mx-auto max-w-lg text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <h1>
             {headers.map((h, idx) => (
               <motion.span
@@ -41,10 +41,16 @@ export const Cta57 = (props: Partial<Props>) => {
               </motion.span>
             ))}
           </h1>
-          <p className="md:text-md">{description}</p>
-          <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
+          <p className="mx-auto max-w-2xl text-base/relaxed text-white/90 md:text-lg">
+            {description}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:mt-10">
             {buttons.map((btn, idx) => (
-              <Button key={idx} {...btn} className="rounded-full">
+              <Button
+                key={idx}
+                {...btn}
+                className={`rounded-full px-6 py-2.5 shadow-lg transition hover:-translate-y-0.5 ${idx === 0 ? "bg-accent text-primary-dark hover:bg-accent-light" : "border border-white/50 bg-white/10 text-white hover:bg-white/20"}`}
+              >
                 {btn.title}
               </Button>
             ))}

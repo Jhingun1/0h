@@ -145,15 +145,15 @@ export const Footer14 = (props: Partial<Props>) => {
   return (
     <footer
       id="relume"
-      className="bg-primary-dark px-[5%] py-12 text-white md:py-18 lg:py-20"
+      className="bg-gradient-to-br from-primary-dark via-primary to-primary-dark px-[5%] py-12 text-white md:py-18 lg:py-20"
     >
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
-          <div className="rb-6 max-w-lg">
-            <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">
+          <div className="rb-6 max-w-xl">
+            <h1 className="mb-5 text-4xl font-bold leading-tight md:mb-6 md:text-6xl lg:text-7xl">
               {heading}
             </h1>
-            <p>{description}</p>
+            <p className="max-w-lg text-white/85">{description}</p>
           </div>
           <div className="mt-6 flex flex-wrap gap-4 md:mt-8 lg:mt-0">
             {buttons.map((button, index) => (
@@ -163,7 +163,7 @@ export const Footer14 = (props: Partial<Props>) => {
             ))}
           </div>
         </div>
-        <div className="py-12 md:py-18 lg:py-20">
+        <div className="py-10 md:py-14 lg:py-16">
           <div className="h-px w-full bg-white/30" />
         </div>
         <div className="rb-12 mb-12 grid grid-cols-1 items-start gap-x-8 gap-y-10 sm:grid-cols-3 md:mb-18 md:gap-y-12 lg:mb-20 lg:grid-cols-6">
@@ -172,11 +172,11 @@ export const Footer14 = (props: Partial<Props>) => {
               key={index}
               className="flex flex-col items-start justify-start"
             >
-              <h2 className="mb-2 font-semibold">{column.title}</h2>
+              <h2 className="mb-2 font-semibold text-white">{column.title}</h2>
               <ul>
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex} className="py-2 text-sm">
-                    <a href={link.url} className="hover:underline">
+                    <a href={link.url} className="text-white/75 transition hover:text-white hover:underline">
                       {link.title}
                     </a>
                   </li>
@@ -199,7 +199,7 @@ export const Footer14 = (props: Partial<Props>) => {
                 key={index}
                 src={image.src}
                 alt={image.alt}
-                className="-ml-3 size-12 min-h-12 min-w-12 rounded-full border-2 border-white object-cover"
+                className="-ml-3 size-12 min-h-12 min-w-12 rounded-full border-2 border-white/50 bg-white object-cover"
               />
             ))}
           </div>
