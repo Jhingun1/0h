@@ -1,32 +1,23 @@
 {
-  "name": "blue-water-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "blue-water-native",
+  "version": "1.0.0",
+  "main": "index.ts",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "dependencies": {
-    "@relume_io/relume-tailwind": "^1.3.0",
-    "@relume_io/relume-ui": "^1.3.1",
-    "autoprefixer": "^10.4.20",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.38.0",
-    "next": "^14.2.33",
-    "postcss": "^8.4.49",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^5.6.0"
+    "expo": "~54.0.33",
+    "expo-image": "~3.0.11",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.33",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5"
-  }
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
 }
