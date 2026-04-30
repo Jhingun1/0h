@@ -1,11 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Source+Code+Pro:wght@500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Inter", sans-serif;
+  margin: 0;
+  background-color: #ffffff;
+  color: #64748d;
+  font-family: "Inter", "SF Pro Display", sans-serif;
+  font-feature-settings: "ss01";
 }
 
 h1,
@@ -14,20 +22,40 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", "SF Pro Display", sans-serif;
+  font-feature-settings: "ss01";
+  font-weight: 300;
+  color: #061b31;
+  letter-spacing: -0.02em;
 }
 
-/* Make all buttons pill-shaped (more round) */
+code,
+pre,
+.font-mono {
+  font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, monospace;
+}
+
 button,
 .btn,
 [role="button"],
 a.btn {
-  border-radius: 9999px !important;
   transition: all 0.2s ease;
   cursor: pointer;
+  border-radius: 4px !important;
 }
 
 button:active,
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.99);
+}
+
+.section-shell {
+  @apply mx-auto px-5 md:px-8;
+  max-width: 80rem;
+}
+
+.stripe-shadow {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 30px 45px -30px,
+    rgba(0, 0, 0, 0.1) 0px 18px 36px -18px;
 }

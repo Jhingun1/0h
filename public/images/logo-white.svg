@@ -1,0 +1,8 @@
+<svg width="380" height="84" viewBox="0 0 380 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="80" height="80" rx="40" fill="#FFFFFF"/>
+  <path d="M22 49.5C35.5 39 48.5 39 62 49.5" stroke="#0047AB" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M20 38C35 26 50 26 64 38" stroke="#008080" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M30 58L40 46L52 58L62 43" stroke="#FFCD00" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="98" y="38" fill="#FFFFFF" font-family="Poppins, Arial, sans-serif" font-size="24" font-weight="700">BLUE WATER</text>
+  <text x="98" y="62" fill="#CFE5FF" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="500">Study &amp; Migration</text>
+</svg>

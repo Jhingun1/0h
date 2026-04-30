@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Permanent residency icon">
+  <rect width="64" height="64" rx="14" fill="#e9f5ff"/>
+  <path d="M20 18h24a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4z" fill="#0047AB"/>
+  <path d="M24 24h16v3H24zm0 6h14v3H24zm0 6h10v3H24z" fill="#fff"/>
+  <circle cx="44" cy="44" r="10" fill="#008080"/>
+  <path d="M40 44.5l2.3 2.4L48 41l2 2-7.6 7.5L38 46.3z" fill="#fff"/>
+</svg>

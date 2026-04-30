@@ -22,7 +22,7 @@ export const Navbar1Defaults: Props = {
       title: "Book Consultation",
       size: "sm",
       variant: "primary",
-      className: "rounded-full",
+      className: "rounded-[4px]",
     },
   ],
 };
@@ -50,7 +50,7 @@ export const Navbar1 = (props?: Partial<Props>) => {
   const isMobile = useMediaQuery("(max-width: 991px)");
 
   return (
-    <section className="z-[999] flex w-full items-center border-b border-border-primary bg-background-primary lg:min-h-18 lg:px-[5%]">
+    <section className="sticky top-0 z-[999] flex w-full items-center border-b border-[#e5edf5] bg-white/90 backdrop-blur-[12px] lg:min-h-18 lg:px-[5%]">
       <div className="size-full lg:flex lg:items-center lg:justify-between">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <a href={logo.url}>
@@ -62,17 +62,17 @@ export const Navbar1 = (props?: Partial<Props>) => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-[#061b31]"
               animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
               variants={topLineVariants}
             />
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-[#061b31]"
               animate={isMobileMenuOpen ? "open" : "closed"}
               variants={middleLineVariants}
             />
             <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
+              className="my-[3px] h-0.5 w-6 bg-[#061b31]"
               animate={isMobileMenuOpen ? ["open", "rotatePhase"] : "closed"}
               variants={bottomLineVariants}
             />
@@ -89,7 +89,7 @@ export const Navbar1 = (props?: Partial<Props>) => {
             <a
               key={idx}
               href={link.url}
-              className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+              className="block py-3 text-[14px] font-normal text-[#061b31] first:pt-7 transition-colors hover:text-[#533afd] lg:px-4 lg:py-2 first:lg:pt-2"
               onClick={() => {
                 if (isMobile) {
                   setIsMobileMenuOpen(false);
@@ -101,7 +101,7 @@ export const Navbar1 = (props?: Partial<Props>) => {
           ))}
           <div className="mt-6 flex flex-col items-center gap-4 lg:ml-4 lg:mt-0 lg:flex-row">
             {buttons.map((btn, idx) => (
-              <Button key={idx} {...btn} className="rounded-full">
+              <Button key={idx} {...btn} className="rounded-[4px]">
                 {btn.title}
               </Button>
             ))}

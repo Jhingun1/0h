@@ -1,0 +1,6 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pacific Institute logo">
+  <rect width="120" height="120" rx="28" fill="#F8FAFC"/>
+  <rect x="16" y="16" width="88" height="88" rx="22" fill="#0F172A"/>
+  <path d="M32 72V48h22c10 0 16 5 16 12s-6 12-16 12H32Zm12-9h10c3 0 5-1 5-3s-2-3-5-3H44v6Z" fill="#FFFFFF"/>
+  <circle cx="79" cy="60" r="10" fill="#38BDF8"/>
+</svg>

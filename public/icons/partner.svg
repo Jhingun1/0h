@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Partner icon">
+  <rect width="64" height="64" rx="16" fill="#E6F6F6"/>
+  <path d="M22 26a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm20 0a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z" fill="#008080"/>
+  <path d="M14 46c0-6 4.8-10 10-10s10 4 10 10v2H14v-2Zm16 2c0-6 4.8-10 10-10s10 4 10 10v2H30v-2Z" fill="#00247D"/>
+</svg>

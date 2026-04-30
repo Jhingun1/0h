@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title2">
+  <title id="title2">Partner 2</title>
+  <rect width="120" height="120" rx="60" fill="#0d1b4d"/>
+  <rect x="26" y="26" width="68" height="68" rx="18" fill="#008080"/>
+  <path d="M46 60h28" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M60 46v28" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+</svg>
