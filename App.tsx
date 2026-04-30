@@ -1,11 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { Image } from "expo-image";
 import {
+  type DimensionValue,
+  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from "react-native";
 
@@ -24,6 +27,29 @@ type Benefit = {
 type Faq = {
   question: string;
   answer: string;
+};
+
+const COLORS = {
+  background: "#ffffff",
+  heading: "#061b31",
+  body: "#64748d",
+  label: "#273951",
+  primary: "#533afd",
+  primaryHover: "#4434d4",
+  border: "#e5edf5",
+  borderPurple: "#b9b9f9",
+  darkSection: "#1c1e54",
+  ruby: "#ea2261",
+  magenta: "#f96bee",
+  magentaSoft: "#ffd7ef",
+};
+
+const SHADOW = {
+  shadowColor: "#32325d",
+  shadowOffset: { width: 0, height: 18 },
+  shadowOpacity: 0.2,
+  shadowRadius: 18,
+  elevation: 6,
 };
 
 const heroImages = [
@@ -119,77 +145,135 @@ const sectionTitle = (title: string, subtitle?: string) => (
 );
 
 export default function App() {
+  const { width } = useWindowDimensions();
+  const isTablet = width >= 640;
+  const isDesktop = width >= 1024;
+  const containerWidth = {
+    maxWidth: 1080,
+    width: "100%" as DimensionValue,
+    alignSelf: "center" as const,
+  };
+  const heroSize = isDesktop ? 48 : isTablet ? 40 : 32;
+  const heroTracking = isDesktop ? -0.96 : isTablet ? -0.72 : -0.45;
+  const sectionTitleSize = isDesktop ? 32 : isTablet ? 28 : 24;
+  const serviceCardWidth = isDesktop ? "31.5%" : isTablet ? "48.5%" : "100%";
+
   return (
     <SafeAreaView style={styles.safe}>
       <StatusBar style="dark" />
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.navbar}>
-          <Text style={styles.brand}>Blue Water Study</Text>
-          <Pressable style={styles.navCta}>
-            <Text style={styles.navCtaText}>Book Consultation</Text>
-          </Pressable>
-        </View>
-
-        <View style={styles.hero}>
-          <Text style={styles.badge}>Trusted Sydney Migration Experts</Text>
-          <Text style={styles.heroTitle}>Your Australian Dream Starts Here</Text>
-          <Text style={styles.heroText}>
-            Blue Water Study guides students, professionals, and families through each step
-            of the Australian immigration process — from visa applications to permanent residency.
-          </Text>
-          <View style={styles.heroActions}>
-            <Pressable style={styles.primaryBtn}>
-              <Text style={styles.primaryBtnText}>Book Free Consultation</Text>
-            </Pressable>
-            <Pressable style={styles.secondaryBtn}>
-              <Text style={styles.secondaryBtnText}>Learn More</Text>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.navbarWrap}>
+          <View style={[styles.navbar, containerWidth]}>
+            <Text style={styles.brand}>Blue Water Study</Text>
+            {isTablet ? (
+              <View style={styles.navLinks}>
+                <Text style={styles.navLinkText}>Services</Text>
+                <Text style={styles.navLinkText}>Process</Text>
+                <Text style={styles.navLinkText}>FAQ</Text>
+              </View>
+            ) : null}
+            <Pressable style={styles.navCta}>
+              <Text style={styles.navCtaText}>Start now</Text>
             </Pressable>
           </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.heroGallery}>
-            {heroImages.map((source, idx) => (
+        </View>
+
+        <View style={[styles.heroSection, containerWidth]}>
+          <View style={styles.heroDecorationA} />
+          <View style={styles.heroDecorationB} />
+          <View style={styles.heroContent}>
+            <Text style={styles.badge}>Stripe-inspired migration platform</Text>
+            <Text
+              style={[
+                styles.heroTitle,
+                {
+                  fontSize: heroSize,
+                  letterSpacing: heroTracking,
+                  lineHeight: Math.round(heroSize * 1.08),
+                },
+              ]}
+            >
+              Your Australian dream, engineered with precision.
+            </Text>
+            <Text style={styles.heroText}>
+              Blue Water Study helps students, professionals, and families navigate every
+              migration milestone with confidence — from first consultation to long-term
+              residency strategy.
+            </Text>
+            <View style={styles.heroActions}>
+              <Pressable style={styles.primaryBtn}>
+                <Text style={styles.primaryBtnText}>Start now</Text>
+              </Pressable>
+              <Pressable style={styles.ghostBtn}>
+                <Text style={styles.ghostBtnText}>Contact sales</Text>
+              </Pressable>
+            </View>
+            <View style={styles.codeBlock}>
+              <Text style={styles.codeLabel}>PROCESSING_ESTIMATE</Text>
+              <Text style={styles.codeValue}>04 - 08 WEEKS</Text>
+            </View>
+          </View>
+
+          <View style={styles.heroPreview}>
+            <View style={[styles.heroLeadImageWrap, SHADOW]}>
               <Image
-                key={idx}
-                source={source}
-                style={styles.heroImage}
+                source={heroImages[0]}
+                style={styles.heroLeadImage}
                 contentFit="cover"
               />
-            ))}
-          </ScrollView>
+            </View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.heroGallery}
+            >
+              {heroImages.slice(1).map((source, idx) => (
+                <Image key={idx} source={source} style={styles.heroImage} contentFit="cover" />
+              ))}
+            </ScrollView>
+          </View>
         </View>
 
-        <View style={styles.section}>
-          {sectionTitle("10,000+ successful visa applications since 2010", "Why clients trust us")}
-          {benefits.map((item, idx) => (
-            <View key={idx} style={styles.card}>
-              <Text style={styles.cardIcon}>{item.icon}</Text>
-              <View style={styles.cardBody}>
-                <Text style={styles.cardTitle}>{item.title}</Text>
-                <Text style={styles.cardText}>{item.description}</Text>
+        <View style={[styles.section, containerWidth]}>
+          {sectionTitle("10,000+ successful visa applications since 2010", "Why teams choose us")}
+          <View style={styles.cardsWrap}>
+            {benefits.map((item, idx) => (
+              <View key={idx} style={[styles.card, SHADOW, { width: serviceCardWidth }]}>
+                <Text style={styles.cardIcon}>{item.icon}</Text>
+                <View style={styles.cardBody}>
+                  <Text style={styles.cardTitle}>{item.title}</Text>
+                  <Text style={styles.cardText}>{item.description}</Text>
+                </View>
               </View>
-            </View>
-          ))}
+            ))}
+          </View>
         </View>
 
-        <View style={styles.section}>
-          {sectionTitle("Expert Visa Guidance for Every Journey", "Our Services")}
-          {services.map((service, idx) => (
-            <View key={idx} style={styles.serviceCard}>
-              <Text style={styles.serviceIcon}>{service.icon}</Text>
-              <Text style={styles.serviceTitle}>{service.title}</Text>
-              <Text style={styles.serviceText}>{service.description}</Text>
-            </View>
-          ))}
+        <View style={[styles.section, containerWidth]}>
+          {sectionTitle("Expert visa guidance for every migration pathway", "Services")}
+          <View style={styles.cardsWrap}>
+            {services.map((service, idx) => (
+              <View key={idx} style={[styles.serviceCard, SHADOW, { width: serviceCardWidth }]}>
+                <Text style={styles.serviceIcon}>{service.icon}</Text>
+                <Text style={styles.serviceTitle}>{service.title}</Text>
+                <Text style={styles.serviceText}>{service.description}</Text>
+              </View>
+            ))}
+          </View>
         </View>
 
-        <View style={styles.section}>
-          {sectionTitle("Simple steps to your Australian visa", "Our Process")}
+        <View style={[styles.section, containerWidth]}>
+          {sectionTitle("Simple steps to your Australian visa", "Process")}
           {[
             "Free Initial Consultation",
             "Document Preparation",
             "Application Lodgement",
             "Visa Grant & Settlement Guidance",
           ].map((step, idx) => (
-            <View key={step} style={styles.stepRow}>
+            <View key={step} style={[styles.stepRow, SHADOW]}>
               <View style={styles.stepBadge}>
                 <Text style={styles.stepBadgeText}>{idx + 1}</Text>
               </View>
@@ -198,31 +282,40 @@ export default function App() {
           ))}
         </View>
 
-        <View style={styles.ctaSection}>
-          <Text style={styles.ctaTitle}>Start Your Australian Journey</Text>
-          <Text style={styles.ctaText}>
-            Book your free consultation and speak with a migration specialist today.
-          </Text>
-          <Pressable style={styles.ctaButton}>
-            <Text style={styles.ctaButtonText}>Book Free Consultation</Text>
-          </Pressable>
+        <View style={styles.darkSectionWrap}>
+          <View style={[styles.darkSection, containerWidth]}>
+            <Text style={styles.darkEyebrow}>Built for ambitious moves</Text>
+            <Text style={styles.darkTitle}>Start your Australian journey with confidence.</Text>
+            <Text style={styles.darkText}>
+              Dedicated advisers, precise documentation workflows, and transparent timelines —
+              all in one migration experience.
+            </Text>
+            <View style={styles.darkActions}>
+              <Pressable style={styles.darkPrimaryBtn}>
+                <Text style={styles.darkPrimaryText}>Start now</Text>
+              </Pressable>
+              <Pressable style={styles.darkGhostBtn}>
+                <Text style={styles.darkGhostText}>Talk to sales</Text>
+              </Pressable>
+            </View>
+          </View>
         </View>
 
-        <View style={styles.section}>
+        <View style={[styles.section, containerWidth]}>
           {sectionTitle("Common Questions")}
           {faqs.map((faq) => (
-            <View key={faq.question} style={styles.faqCard}>
+            <View key={faq.question} style={[styles.faqCard, SHADOW]}>
               <Text style={styles.faqQ}>{faq.question}</Text>
               <Text style={styles.faqA}>{faq.answer}</Text>
             </View>
           ))}
         </View>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerBrand}>Blue Water Study</Text>
-          <Text style={styles.footerText}>
-            © 2026 Blue Water Study. All rights reserved.
-          </Text>
+        <View style={styles.footerWrap}>
+          <View style={[styles.footer, containerWidth]}>
+            <Text style={styles.footerBrand}>Blue Water Study</Text>
+            <Text style={styles.footerText}>© 2026 Blue Water Study. All rights reserved.</Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -232,137 +325,223 @@ export default function App() {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: "#f8fafc",
+    backgroundColor: COLORS.background,
   },
   content: {
-    paddingBottom: 32,
+    paddingBottom: 56,
+    backgroundColor: COLORS.background,
+  },
+  navbarWrap: {
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.border,
+    backgroundColor: "rgba(255,255,255,0.97)",
   },
   navbar: {
     paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingVertical: 14,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#ffffff",
-    borderBottomWidth: 1,
-    borderBottomColor: "#dbeafe",
-  },
-  logo: {
-    width: 140,
-    height: 32,
+    borderRadius: 6,
   },
   brand: {
-    color: "#00247D",
-    fontSize: 21,
-    fontWeight: "800",
+    color: COLORS.heading,
+    fontSize: 20,
+    fontWeight: "300",
+    letterSpacing: -0.22,
+    flexShrink: 0,
+  },
+  navLinks: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+    marginHorizontal: 10,
+  },
+  navLinkText: {
+    color: COLORS.heading,
+    fontSize: 14,
+    fontWeight: "400",
   },
   navCta: {
-    backgroundColor: "#00247D",
-    borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 9,
+    backgroundColor: COLORS.primary,
+    borderRadius: 4,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   navCtaText: {
     color: "#fff",
-    fontSize: 12,
-    fontWeight: "700",
+    fontSize: 14,
+    fontWeight: "400",
   },
-  hero: {
-    padding: 20,
-    gap: 14,
+  heroSection: {
+    paddingHorizontal: 20,
+    paddingTop: 36,
+    paddingBottom: 18,
+    position: "relative",
+  },
+  heroDecorationA: {
+    position: "absolute",
+    width: 220,
+    height: 220,
+    borderRadius: 220,
+    right: -80,
+    top: -24,
+    backgroundColor: "rgba(249,107,238,0.14)",
+  },
+  heroDecorationB: {
+    position: "absolute",
+    width: 160,
+    height: 160,
+    borderRadius: 160,
+    left: -70,
+    top: 140,
+    backgroundColor: "rgba(234,34,97,0.1)",
+  },
+  heroContent: {
+    gap: 12,
   },
   badge: {
     alignSelf: "flex-start",
-    backgroundColor: "#dbeafe",
-    color: "#1e3a8a",
-    fontWeight: "700",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 999,
-    fontSize: 12,
+    backgroundColor: COLORS.magentaSoft,
+    color: COLORS.heading,
+    fontWeight: "400",
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: COLORS.magentaSoft,
+    fontSize: 11,
   },
   heroTitle: {
-    fontSize: 34,
-    lineHeight: 40,
-    fontWeight: "800",
-    color: "#0f172a",
+    fontWeight: "300",
+    color: COLORS.heading,
   },
   heroText: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: "#475569",
+    fontSize: 18,
+    lineHeight: 25,
+    color: COLORS.body,
+    fontWeight: "300",
   },
   heroActions: {
     flexDirection: "row",
     gap: 10,
     flexWrap: "wrap",
+    marginTop: 6,
   },
   primaryBtn: {
-    backgroundColor: "#00247D",
-    borderRadius: 999,
+    backgroundColor: COLORS.primary,
+    borderRadius: 4,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   primaryBtnText: {
     color: "#fff",
-    fontWeight: "700",
+    fontWeight: "400",
+    fontSize: 16,
   },
-  secondaryBtn: {
-    backgroundColor: "#fff",
-    borderColor: "#cbd5e1",
+  ghostBtn: {
+    backgroundColor: "transparent",
+    borderColor: COLORS.borderPurple,
     borderWidth: 1,
-    borderRadius: 999,
+    borderRadius: 4,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
-  secondaryBtnText: {
-    color: "#0f172a",
-    fontWeight: "700",
+  ghostBtnText: {
+    color: COLORS.primary,
+    fontWeight: "400",
+    fontSize: 16,
   },
-  heroGallery: {
-    paddingTop: 6,
+  codeBlock: {
+    marginTop: 6,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    backgroundColor: "#ffffff",
+    alignSelf: "flex-start",
+  },
+  codeLabel: {
+    color: COLORS.label,
+    fontSize: 11,
+    marginBottom: 2,
+    fontFamily: Platform.select({ ios: "Menlo", android: "monospace", default: "monospace" }),
+  },
+  codeValue: {
+    color: COLORS.heading,
+    fontSize: 12,
+    fontVariant: ["tabular-nums"],
+    letterSpacing: -0.3,
+    fontFamily: Platform.select({ ios: "Menlo", android: "monospace", default: "monospace" }),
+  },
+  heroPreview: {
+    marginTop: 20,
     gap: 10,
   },
+  heroLeadImageWrap: {
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+  },
+  heroLeadImage: {
+    width: "100%",
+    height: 240,
+  },
+  heroGallery: {
+    gap: 10,
+    paddingTop: 2,
+  },
   heroImage: {
-    width: 210,
-    height: 300,
-    borderRadius: 18,
-    backgroundColor: "#e2e8f0",
+    width: 170,
+    height: 120,
+    borderRadius: 6,
+    backgroundColor: "#eef3f8",
+    borderWidth: 1,
+    borderColor: COLORS.border,
   },
   section: {
     paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 8,
+    paddingTop: 36,
+    paddingBottom: 6,
     gap: 10,
   },
   sectionHead: {
-    marginBottom: 8,
+    marginBottom: 12,
   },
   sectionSubtitle: {
-    color: "#1d4ed8",
+    color: COLORS.label,
     fontSize: 13,
-    fontWeight: "700",
+    fontWeight: "400",
     marginBottom: 4,
     textTransform: "uppercase",
   },
   sectionTitle: {
-    color: "#0f172a",
-    fontSize: 26,
-    lineHeight: 32,
-    fontWeight: "800",
+    color: COLORS.heading,
+    fontSize: 24,
+    lineHeight: 28,
+    fontWeight: "300",
+    letterSpacing: -0.64,
+  },
+  cardsWrap: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
   },
   card: {
     backgroundColor: "#fff",
-    borderRadius: 16,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: COLORS.border,
     padding: 14,
     flexDirection: "row",
     gap: 10,
     alignItems: "flex-start",
   },
   cardIcon: {
-    fontSize: 20,
+    fontSize: 19,
     marginTop: 1,
   },
   cardBody: {
@@ -370,20 +549,22 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   cardTitle: {
-    fontSize: 17,
-    fontWeight: "700",
-    color: "#0f172a",
+    fontSize: 20,
+    fontWeight: "300",
+    letterSpacing: -0.22,
+    color: COLORS.heading,
   },
   cardText: {
-    color: "#475569",
-    fontSize: 14,
+    color: COLORS.body,
+    fontSize: 16,
     lineHeight: 20,
+    fontWeight: "300",
   },
   serviceCard: {
     backgroundColor: "#ffffff",
-    borderRadius: 16,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: COLORS.border,
     padding: 14,
     gap: 6,
   },
@@ -391,23 +572,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   serviceTitle: {
-    color: "#0f172a",
-    fontWeight: "800",
-    fontSize: 17,
+    color: COLORS.heading,
+    fontWeight: "300",
+    fontSize: 22,
+    letterSpacing: -0.22,
   },
   serviceText: {
-    color: "#475569",
-    fontSize: 14,
-    lineHeight: 20,
+    color: COLORS.body,
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: "300",
   },
   stepRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
     backgroundColor: "#fff",
-    borderRadius: 14,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: COLORS.border,
     padding: 12,
   },
   stepBadge: {
@@ -424,17 +607,76 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   stepText: {
-    color: "#0f172a",
-    fontWeight: "600",
+    color: COLORS.heading,
+    fontWeight: "300",
     flex: 1,
-    fontSize: 15,
+    fontSize: 18,
+    letterSpacing: -0.22,
+  },
+  darkSectionWrap: {
+    marginTop: 24,
+    backgroundColor: COLORS.darkSection,
+  },
+  darkSection: {
+    paddingHorizontal: 20,
+    paddingVertical: 42,
+  },
+  darkEyebrow: {
+    color: "rgba(255,255,255,0.75)",
+    fontSize: 12,
+    marginBottom: 8,
+    letterSpacing: 0.2,
+  },
+  darkTitle: {
+    color: "#ffffff",
+    fontSize: 32,
+    lineHeight: 35,
+    letterSpacing: -0.64,
+    fontWeight: "300",
+    marginBottom: 8,
+  },
+  darkText: {
+    color: "rgba(255,255,255,0.72)",
+    fontSize: 16,
+    lineHeight: 23,
+    fontWeight: "300",
+    maxWidth: 720,
+  },
+  darkActions: {
+    flexDirection: "row",
+    gap: 10,
+    flexWrap: "wrap",
+    marginTop: 16,
+  },
+  darkPrimaryBtn: {
+    backgroundColor: COLORS.primary,
+    borderRadius: 4,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  darkPrimaryText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "400",
+  },
+  darkGhostBtn: {
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.35)",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  darkGhostText: {
+    color: "#ffffff",
+    fontSize: 16,
+    fontWeight: "400",
   },
   ctaSection: {
     marginHorizontal: 20,
     marginTop: 20,
     marginBottom: 10,
-    borderRadius: 20,
-    backgroundColor: "#00247D",
+    borderRadius: 8,
+    backgroundColor: COLORS.primary,
     padding: 20,
     gap: 8,
   },
@@ -464,41 +706,45 @@ const styles = StyleSheet.create({
   },
   faqCard: {
     backgroundColor: "#fff",
-    borderRadius: 16,
+    borderRadius: 6,
     borderWidth: 1,
-    borderColor: "#e2e8f0",
+    borderColor: COLORS.border,
     padding: 14,
     gap: 6,
   },
   faqQ: {
-    color: "#0f172a",
-    fontWeight: "700",
-    fontSize: 16,
+    color: COLORS.heading,
+    fontWeight: "300",
+    fontSize: 22,
+    letterSpacing: -0.22,
   },
   faqA: {
-    color: "#475569",
-    fontSize: 14,
-    lineHeight: 20,
+    color: COLORS.body,
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: "300",
+  },
+  footerWrap: {
+    marginTop: 26,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.border,
   },
   footer: {
-    marginTop: 20,
-    backgroundColor: "#001A5E",
-    paddingVertical: 24,
+    backgroundColor: COLORS.background,
+    paddingVertical: 28,
     paddingHorizontal: 20,
-    alignItems: "center",
-    gap: 10,
-  },
-  footerLogo: {
-    width: 180,
-    height: 36,
+    alignItems: "flex-start",
+    gap: 6,
   },
   footerBrand: {
-    color: "#ffffff",
-    fontSize: 22,
-    fontWeight: "800",
+    color: COLORS.heading,
+    fontSize: 20,
+    fontWeight: "300",
+    letterSpacing: -0.22,
   },
   footerText: {
-    color: "#cbd5e1",
-    fontSize: 12,
+    color: COLORS.body,
+    fontSize: 13,
+    fontWeight: "300",
   },
 });
