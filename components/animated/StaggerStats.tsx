@@ -24,7 +24,9 @@ export const StaggerStats = (props: Props) => {
   const { heading, description, stats } = { ...defaultProps, ...props };
 
   return (
-    <section className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-white px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 bg-[radial-gradient(circle,_rgba(249,107,238,0.16),_transparent_60%)]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 bg-[radial-gradient(circle,_rgba(234,34,97,0.14),_transparent_60%)]" />
       <div className="container">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
           <p className="mb-3 text-[13px] font-normal uppercase tracking-[0.08em] text-[#273951]">

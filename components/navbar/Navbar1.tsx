@@ -22,7 +22,7 @@ export const Navbar1Defaults: Props = {
       title: "Book Consultation",
       size: "sm",
       variant: "primary",
-      className: "rounded-full",
+      className: "rounded-[4px]",
     },
   ],
 };

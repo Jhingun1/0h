@@ -43,6 +43,11 @@ export const Header76 = (props: Props) => {
 
   return (
     <section className="relative overflow-hidden bg-white py-16 md:py-20 lg:py-0">
+      <img
+        src="/stripe/wave-bg.webp"
+        alt="Stripe-inspired gradient background"
+        className="pointer-events-none absolute -right-[18%] -top-[6%] h-[120%] w-auto opacity-90"
+      />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,_rgba(249,107,238,0.2),_transparent_35%),radial-gradient(circle_at_84%_14%,_rgba(234,34,97,0.14),_transparent_30%)]" />
       <div className="relative grid grid-cols-1 gap-y-14 md:grid-flow-row lg:grid-flow-col lg:grid-cols-2 lg:items-center">
         <div className="mx-[5%] max-w-[40rem] justify-self-start lg:ml-[5vw] lg:mr-20 lg:justify-self-end">

@@ -28,6 +28,12 @@ export const ParallaxPanels = () => {
 
   return (
     <section className="relative overflow-hidden bg-white px-[5%] py-16 md:py-24 lg:py-28">
+      <img
+        src="/stripe/wave-bg.webp"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15"
+      />
       <div className="container">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
           <p className="mb-3 text-sm font-normal uppercase tracking-[0.08em] text-[#273951]">

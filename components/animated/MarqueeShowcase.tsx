@@ -52,6 +52,11 @@ export const MarqueeShowcase = (props: Partial<Props>) => {
       </div>
 
       <div className="relative left-1/2 w-screen -translate-x-1/2">
+        <img
+          src="/stripe/wave-bg.webp"
+          alt="Stripe inspired gradient background"
+          className="pointer-events-none absolute inset-x-0 -top-16 mx-auto h-[24rem] w-auto max-w-none opacity-45"
+        />
         <div className="mb-4 flex w-max animate-marquee-horizontally gap-4 pr-4">
           {[...topRow, ...topRow, ...topRow].map((card, index) => (
             <div
@@ -71,6 +76,22 @@ export const MarqueeShowcase = (props: Partial<Props>) => {
             >
               <h3 className="mb-2 text-[1.38rem] font-light tracking-[-0.22px] text-heading-solid">{card.title}</h3>
               <p className="font-light text-body-muted">{card.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-6 px-[5%] md:grid-cols-4">
+          {[
+            { src: "/stripe/logo-runway.webp", alt: "Runway" },
+            { src: "/stripe/logo-linear.webp", alt: "Linear" },
+            { src: "/stripe/logo-supabase.webp", alt: "Supabase" },
+            { src: "/stripe/logo-elevenlabs.webp", alt: "ElevenLabs" },
+          ].map((brand) => (
+            <div
+              key={brand.alt}
+              className="flex h-16 items-center justify-center rounded-md border border-border-subtle bg-white/95 px-6 shadow-stripe-ambient"
+            >
+              <img src={brand.src} alt={brand.alt} className="max-h-8 w-full object-contain" />
             </div>
           ))}
         </div>
