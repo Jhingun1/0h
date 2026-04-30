@@ -145,12 +145,12 @@ export const Footer14 = (props: Partial<Props>) => {
   return (
     <footer
       id="relume"
-      className="bg-gradient-to-br from-primary-dark via-primary to-primary-dark px-[5%] py-12 text-white md:py-18 lg:py-20"
+      className="bg-[#1c1e54] px-[5%] py-12 text-white md:py-18 lg:py-20"
     >
       <div className="container">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="rb-6 max-w-xl">
-            <h1 className="mb-5 text-4xl font-bold leading-tight md:mb-6 md:text-6xl lg:text-7xl">
+            <h1 className="mb-5 text-4xl font-light leading-[1.1] tracking-[-0.64px] md:mb-6 md:text-6xl lg:text-7xl">
               {heading}
             </h1>
             <p className="max-w-lg text-white/85">{description}</p>
@@ -172,7 +172,7 @@ export const Footer14 = (props: Partial<Props>) => {
               key={index}
               className="flex flex-col items-start justify-start"
             >
-              <h2 className="mb-2 font-semibold text-white">{column.title}</h2>
+              <h2 className="mb-2 text-sm font-normal text-white">{column.title}</h2>
               <ul>
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex} className="py-2 text-sm">

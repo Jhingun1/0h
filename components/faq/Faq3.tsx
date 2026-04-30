@@ -56,15 +56,15 @@ export const Faq3 = (props: Partial<Props>) => {
   };
 
   return (
-    <section id="faq" className="bg-slate-50 px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="faq" className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-12 lg:grid-cols-[.75fr,1fr] lg:gap-x-20">
         <div>
-          <h2 className="mb-5 text-5xl font-bold text-primary-dark md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="mb-5 text-4xl font-light tracking-[-0.64px] text-[#061b31] md:mb-6 md:text-6xl lg:text-7xl">
             {heading}
           </h2>
-          <p className="text-slate-700 md:text-md">{description}</p>
+          <p className="text-[#64748d] md:text-md">{description}</p>
           <div className="mt-6 md:mt-8">
-            <Button {...button} className="rounded-full">
+            <Button {...button} className="rounded-md border-[#b9b9f9] text-[#533afd] hover:bg-[#f5f3ff]">
               {button.title}
             </Button>
           </div>
@@ -74,12 +74,12 @@ export const Faq3 = (props: Partial<Props>) => {
             <AccordionItem
               key={idx}
               value={`item-${idx}`}
-              className="mb-4 rounded-2xl border border-slate-200 bg-white shadow-sm"
+              className="mb-4 rounded-md border border-[#e5edf5] bg-white shadow-[rgba(50,50,93,0.25)_0px_24px_44px_-28px,rgba(0,0,0,0.1)_0px_14px_30px_-20px]"
             >
-              <AccordionTrigger className="px-4 font-semibold text-primary-dark md:py-5 md:text-md">
+              <AccordionTrigger className="px-4 text-[16px] font-normal text-[#061b31] md:py-5 md:text-md">
                 {q.title}
               </AccordionTrigger>
-              <AccordionContent className="px-4 text-slate-700 md:pb-6">
+              <AccordionContent className="px-4 text-[#64748d] md:pb-6">
                 {q.answer}
               </AccordionContent>
             </AccordionItem>

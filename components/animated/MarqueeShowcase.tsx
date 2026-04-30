@@ -37,10 +37,10 @@ export const MarqueeShowcase = (props: Partial<Props>) => {
     <section className="overflow-hidden bg-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container mb-10 md:mb-14">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-5 text-5xl font-bold text-slate-900 md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="mb-5 text-4xl font-light tracking-[-0.64px] text-heading-solid md:mb-6 md:text-6xl lg:text-7xl">
             {heading}
           </h2>
-          <p className="mx-auto max-w-2xl text-slate-600 md:text-md">{description}</p>
+          <p className="mx-auto max-w-2xl font-light text-body-muted md:text-md">{description}</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:mt-8">
             {buttons.map((button, index) => (
               <Button key={`${button.title}-${index}`} {...button}>
@@ -56,10 +56,10 @@ export const MarqueeShowcase = (props: Partial<Props>) => {
           {[...topRow, ...topRow, ...topRow].map((card, index) => (
             <div
               key={`top-${card.title}-${index}`}
-              className="w-[20rem] rounded-lg border border-border-primary bg-white p-6 shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px]"
+              className="w-[20rem] rounded-md border border-border-subtle bg-white p-6 shadow-stripe-elevated"
             >
-              <h3 className="mb-2 text-xl font-bold text-slate-900">{card.title}</h3>
-              <p className="text-slate-600">{card.text}</p>
+              <h3 className="mb-2 text-[1.38rem] font-light tracking-[-0.22px] text-heading-solid">{card.title}</h3>
+              <p className="font-light text-body-muted">{card.text}</p>
             </div>
           ))}
         </div>
@@ -67,10 +67,10 @@ export const MarqueeShowcase = (props: Partial<Props>) => {
           {[...bottomRow, ...bottomRow, ...bottomRow].map((card, index) => (
             <div
               key={`bottom-${card.title}-${index}`}
-              className="w-[20rem] rounded-lg border border-border-primary bg-white p-6 shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px]"
+              className="w-[20rem] rounded-md border border-border-subtle bg-white p-6 shadow-stripe-elevated"
             >
-              <h3 className="mb-2 text-xl font-bold text-slate-900">{card.title}</h3>
-              <p className="text-slate-600">{card.text}</p>
+              <h3 className="mb-2 text-[1.38rem] font-light tracking-[-0.22px] text-heading-solid">{card.title}</h3>
+              <p className="font-light text-body-muted">{card.text}</p>
             </div>
           ))}
         </div>

@@ -56,38 +56,40 @@ export const Layout121Defaults: Props = {
 export const Layout121 = (props: Partial<Props>) => {
   const { tagline, heading, buttons, features } = { ...Layout121Defaults, ...props };
   return (
-    <section className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="stripe-section stripe-plain px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
           <div>
-            <p className="mb-3 inline-flex rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary md:mb-4">
+            <p className="mb-3 inline-flex rounded-[4px] border border-[#e5edf5] bg-white px-3 py-1 text-[11px] font-normal uppercase tracking-[0.08em] text-[#273951] md:mb-4">
               {tagline}
             </p>
-            <h2 className="mb-5 text-4xl font-bold leading-tight text-slate-900 md:mb-6 md:text-6xl lg:text-7xl">
+            <h2 className="stripe-h2 mb-5 md:mb-6">
               {heading}
             </h2>
             <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
               {buttons.map((btn, idx) => (
-                <Button key={idx} {...btn} className="rounded-full">
+                <Button key={idx} {...btn} className="rounded-[4px]">
                   {btn.title}
                 </Button>
               ))}
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-3 md:p-5">
+          <div className="relative overflow-hidden rounded-[8px] border border-[#e5edf5] bg-white p-3 md:p-5">
             {features.map((feat, idx) => (
               <div
                 key={idx}
-                className="mb-3 grid grid-cols-[max-content_1fr] gap-x-5 rounded-2xl bg-white px-4 py-6 shadow-sm last:mb-0 md:gap-x-6 md:px-6"
+                className="mb-3 grid grid-cols-[max-content_1fr] gap-x-5 rounded-[6px] border border-[#e5edf5] bg-white px-4 py-6 shadow-[rgba(50,50,93,0.25)_0px_30px_45px_-30px,rgba(0,0,0,0.1)_0px_18px_36px_-18px] last:mb-0 md:gap-x-6 md:px-6"
               >
                 <div className="relative flex flex-col items-center justify-start">
-                  <div className="relative z-10 rounded-full bg-primary/10 p-3">
+                  <div className="relative z-10 rounded-[6px] bg-[#f6f7ff] p-3">
                     <img src={feat.icon.src} alt={feat.icon.alt} className="size-12" />
                   </div>
                 </div>
                 <div>
-                  <h6 className="mb-2 text-lg font-bold text-slate-900 md:text-xl">{feat.heading}</h6>
-                  <p className="text-slate-600">{feat.description}</p>
+                  <h6 className="mb-2 text-[22px] font-light leading-[1.1] tracking-[-0.22px] text-[#061b31] md:text-[26px]">
+                    {feat.heading}
+                  </h6>
+                  <p className="text-[16px] font-light leading-[1.4] text-[#64748d]">{feat.description}</p>
                 </div>
               </div>
             ))}

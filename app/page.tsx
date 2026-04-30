@@ -10,6 +10,8 @@ import { Cta57 as FinalCTA } from "@/components/cta/Cta57";
 import { Faq3 as FAQ } from "@/components/faq/Faq3";
 import { Footer14 } from "@/components/footer/Footer14";
 import { MarqueeShowcase } from "@/components/animated/MarqueeShowcase";
+import { ParallaxPanels } from "@/components/animated/ParallaxPanels";
+import { StaggerStats } from "@/components/animated/StaggerStats";
 
 export default function Home() {
   return (
@@ -47,6 +49,8 @@ export default function Home() {
         ]}
       />
       <MarqueeShowcase />
+      <ParallaxPanels />
+      <StaggerStats />
       <Process />
       <FinalCTA />
       <FAQ />

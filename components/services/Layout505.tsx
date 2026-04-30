@@ -106,26 +106,26 @@ export const Layout505Defaults: Props = {
 export const Layout505 = (props: Partial<Props>) => {
   const { tagline, heading, description, tabs, defaultTabValue } = { ...Layout505Defaults, ...props };
   return (
-    <section id="services" className="bg-white px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="services" className="bg-white px-[5%] py-16 md:py-24 lg:py-28 stripe-surface-lines">
       <div className="container">
         <div className="mx-auto mb-12 max-w-3xl text-center md:mb-18 lg:mb-20">
-          <p className="mb-3 font-semibold text-primary md:mb-4">{tagline}</p>
-          <h2 className="mb-5 text-4xl font-bold text-slate-900 md:mb-6 md:text-6xl lg:text-7xl">
+          <p className="mb-3 font-normal tracking-[0.04em] text-[#273951] md:mb-4">{tagline}</p>
+          <h2 className="mb-5 text-[2rem] font-light tracking-[-0.64px] text-[#061b31] md:mb-6 md:text-[2.6rem] md:tracking-[-0.72px] lg:text-[3rem] lg:tracking-[-0.96px]">
             {heading}
           </h2>
-          <p className="text-slate-600 md:text-md">{description}</p>
+          <p className="text-[#64748d] md:text-md">{description}</p>
         </div>
         <Tabs
           defaultValue={defaultTabValue}
           orientation="vertical"
-          className="relative grid auto-cols-fr grid-cols-1 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_60px_rgba(2,6,23,0.1)] md:grid-cols-[1fr_1.5fr]"
+          className="stripe-elevation relative grid auto-cols-fr grid-cols-1 overflow-hidden rounded-[8px] border border-[#e5edf5] bg-white md:grid-cols-[1fr_1.5fr]"
         >
-          <TabsList className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-slate-200 bg-slate-50/90 md:border-b-0 md:border-r">
+          <TabsList className="relative grid h-full auto-cols-fr grid-cols-1 border-b border-[#e5edf5] bg-[#f6f9fc]/90 md:border-b-0 md:border-r">
             {tabs.map((tab, idx) => (
               <TabsTrigger
                 key={idx}
                 value={tab.value}
-                className="items-start justify-start rounded-none border-0 border-b border-slate-200 px-6 py-6 text-xl font-bold text-slate-700 last-of-type:border-0 data-[state=active]:bg-white data-[state=active]:text-primary first:rounded-tl-3xl last:rounded-bl-3xl md:first:rounded-tl-3xl md:last:rounded-bl-3xl"
+                className="items-start justify-start rounded-none border-0 border-b border-[#e5edf5] px-6 py-6 text-[1.125rem] font-normal text-[#273951] last-of-type:border-0 data-[state=active]:bg-white data-[state=active]:text-[#533afd] first:rounded-tl-[8px] last:rounded-bl-[8px] md:first:rounded-tl-[8px] md:last:rounded-bl-[8px]"
               >
                 {tab.trigger}
               </TabsTrigger>
@@ -135,17 +135,17 @@ export const Layout505 = (props: Partial<Props>) => {
             <TabsContent key={tab.value} value={tab.value} className="data-[state=active]:animate-tabs">
               <div className="flex h-full flex-col justify-center p-6 md:p-8 lg:p-16">
                 <div className="mb-5 md:mb-6">
-                  <div className="inline-flex rounded-full bg-primary/10 p-3">
+                  <div className="inline-flex rounded-[6px] border border-[#e5edf5] bg-white p-3">
                     <img src={tab.content.icon.src} className="size-9" alt={tab.content.icon.alt} />
                   </div>
                 </div>
-                <h2 className="mb-5 text-3xl font-bold text-slate-900 md:mb-6 md:text-5xl lg:text-6xl">
+                <h2 className="mb-5 text-[1.6rem] font-light tracking-[-0.26px] text-[#061b31] md:mb-6 md:text-[2.1rem] md:tracking-[-0.36px] lg:text-[2.6rem] lg:tracking-[-0.64px]">
                   {tab.content.heading}
                 </h2>
-                <p className="text-slate-600">{tab.content.description}</p>
+                <p className="text-[#64748d]">{tab.content.description}</p>
                 <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                   {tab.content.buttons.map((btn, i) => (
-                    <Button key={i} {...btn} className="rounded-full text-primary hover:text-primary-dark">
+                    <Button key={i} {...btn} className="rounded-[4px] text-[#533afd] hover:text-[#4434d4]">
                       {btn.title}
                     </Button>
                   ))}
